@@ -65,4 +65,4 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
             docker stop my-fastapi-app || true
             docker rm my-fastapi-app || true
-            docker run -d -p 8000:8000 --name my-fastapi-app ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
+            docker run -d -p 8000:8000 --name my-fastapi-app ${{ secrets.DOCKERHUB_USERNAME }}/my-fastapi-app:latest
