@@ -6,10 +6,10 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  # build:
+  #   runs-on: ubuntu-latest
     
-    steps:
+  #   steps:
   #     - name: Checkout repository
   #       uses: actions/checkout@v2
 
@@ -23,12 +23,8 @@ jobs:
   #         python -m pip install --upgrade pip
   #         pip install -r requirements.txt
 
-        - name: Install dependencies
-          run: |
-            echo ${{steps.date.outputs.date}}
-
   docker:
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -51,7 +47,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-fastapi-app:${{steps.date.outputs.date}}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-fastapi-app:${{ steps.docker_tags.outputs.tags }}
 
       # - name: Build and push Docker image
       #   uses: docker/build-push-action@v2
