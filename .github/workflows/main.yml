@@ -12,8 +12,7 @@ jobs:
       - name: GitHub Tag Name example
         run: |
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-          echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-          echo $GITHUB_ENV
+          echo ${{ steps.vars.outputs.tag }}
 
   # build:
   #   runs-on: ubuntu-latest
