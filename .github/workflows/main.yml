@@ -21,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
             echo ${{  github.ref_name }}
+            echo ${{ steps.vars.outputs.tag }}
   #         python -m pip install --upgrade pip
   #         pip install -r requirements.txt
 
